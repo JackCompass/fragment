@@ -21,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node ./node_modules/typeorm/cli",
     "typeorm:run-migrations": "npm run typeorm migration:run -- -d src/shared/typeorm/typeorm.config.ts",
-    "typeorm:generate-migration": "npm run typeorm -- -d src/shared/typeorm/typeorm.config.ts migration:generate src/migrations/$npm_config_name",
+    "typeorm:generate-migrations": "npm run typeorm -- -d src/shared/typeorm/typeorm.config.ts migration:generate src/migrations/$npm_config_name",
     "typeorm:revert-migration": "npm run typeorm -- -d src/shared/typeorm/typeorm.config.ts migration:revert"
   },
   "dependencies": {
@@ -32,6 +32,8 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

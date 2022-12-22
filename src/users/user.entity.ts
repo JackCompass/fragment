@@ -1,16 +1,13 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn() id: number;
-    @Column() username: string;
-    @Column() password: string;
-    @Column() full_name: string;
-    @Column() display_name: string;
-    @Column() phone: number;
-
-    @Column() relationship: string;
-    @Column() avatar: string;
-    @Column() friends_list: string;
-    @Column() last_seen_at: Date;
+  @PrimaryGeneratedColumn() id;
+  @Column({ type: 'varchar', unique: true }) username;
+  @Column({ type: 'varchar' }) password;
+  @Column({ type: 'varchar' }) full_name;
+  @Column({ type: 'varchar' }) display_name;
+  @Column({ type: 'varchar', nullable: true }) avatar;
+  @Column({ type: 'simple-array', default: [] }) friends_list;
+  @Column({ type: 'timestamp', nullable: true }) last_seen_at;
 }
