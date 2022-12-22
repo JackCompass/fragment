@@ -10,15 +10,18 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
     createTypeOrmOptions(connectionName?: string): Promise<TypeOrmModuleOptions> | TypeOrmModuleOptions {
         return {
             database: this.config.get<string>("DATABASE_NAME"),
-            entities: [],
+            entities: ["dist/**/*.entity{.ts,.js}"],
             host: this.config.get<string>("DATABASE_HOST"),
-            migrations: [],
+            migrations: ["dist/migrations/*{.ts,.js}"],
+            migrationsTableName: this.config.get<string>("DATABASE_MIGRATION_TABLE_NAME"),
             password: this.config.get<string>("DATABASE_PASSWORD"),
             port: this.config.get<number>("DATABASE_PORT"),
+            username: this.config.get<string>("DATABASE_USERNAME"),
+            autoLoadEntities: true,
             synchronize: false,
+            migrationsRun: true,
             // @ts-ignore
-            type: this.config.get<string>("DATABASE_TYPE"),
-            username: this.config.get<string>("DATABASE_USERNAME")
+            type: this.config.get<string>("DATABASE_TYPE")
         }
     }
 
