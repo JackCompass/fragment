@@ -7,11 +7,9 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { UserInfo } from './user.interface';
 import { UsersService } from './users.service';
-import { RegisterUserDto, UpdateUserDto } from './user.dto';
+import { FriendListDto, RegisterUserDto, UpdateUserDto } from './user.dto';
 import { IdDto } from '../shared/dto/shared.dto';
 
 @Controller('user')
@@ -27,6 +25,15 @@ export class UsersController {
   @Patch(':id')
   updateUser(@Param() param: IdDto, @Body() userInfo: UpdateUserDto) {
     return this.userService.updateUser(param.id, userInfo);
+  }
+
+  @Patch('friends/:id')
+  updateUserFriendList(
+    @Param() param: IdDto,
+    @Body() friendInfo: FriendListDto,
+  ) {
+    return friendInfo;
+    // return this.userService.updateUserFriendList(param.id, friendInfo);
   }
 
   // todo: Either return user or throw error.
