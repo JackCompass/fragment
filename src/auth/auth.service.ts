@@ -18,6 +18,14 @@ export class AuthService {
     return null;
   }
 
+  async verifyJwtToken(token: string) {
+    try {
+      return await this.jwtService.verify(token);
+    } catch (error) {
+      return null;
+    }
+  }
+
   async generateJwt(user: any) {
     const payload = { ...user };
     return {

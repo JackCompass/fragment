@@ -4,6 +4,8 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from './shared/typeorm/typeorm.service';
 import { ConfigModule } from '@nestjs/config';
+import { MessagesModule } from './messages/messages.module';
+import { EventsModule } from './events/events.module';
 
 const envFilePath = ['.env', '.env.development'];
 
@@ -13,6 +15,8 @@ const envFilePath = ['.env', '.env.development'];
     UsersModule,
     TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
     ConfigModule.forRoot({ envFilePath, isGlobal: true }),
+    MessagesModule,
+    EventsModule,
   ],
   controllers: [],
   providers: [],
